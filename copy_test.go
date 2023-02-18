@@ -9,6 +9,20 @@ import (
 	"github.com/felix-kaestner/copy"
 )
 
+func ExampleDeep() {
+	type Answer struct {
+		Value int
+	}
+
+	meaningOfLife := &Answer{Value: 42}
+
+	quote := copy.Deep(meaningOfLife)
+
+	fmt.Printf("%#v", quote)
+	// Output:
+	// &copy_test.Answer{Value:42}
+}
+
 type String string
 
 func NewString(s string) fmt.Stringer { return String(s) }
