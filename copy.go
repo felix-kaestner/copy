@@ -2,6 +2,9 @@ package copy
 
 import "reflect"
 
+// Deep returns a deep copy of v.
+//
+// Deep will not copy unexported struct fields (lowercase field names).
 func Deep[T any](v T) T {
 	if rv := reflect.ValueOf(v); rv.IsValid() {
 		return deep(rv).Interface().(T)
@@ -87,8 +90,8 @@ func deep(v reflect.Value) reflect.Value {
 		if v.IsNil() {
 			return reflect.Zero(v.Type())
 		}
-		vt := v.Type()
 		fn := v.Call
+		vt := v.Type()
 		if vt.IsVariadic() {
 			fn = v.CallSlice
 		}
