@@ -31,16 +31,16 @@
 ```go
 package main
 
-import "github.com/felix-kaestner/copy"
+import cp "github.com/felix-kaestner/copy"
 
 type Answer struct {
-    Value int
+	Value int
 }
 
 func main() {
-    meaningOfLife := &Answer{Value: 42}
+	meaningOfLife := &Answer{Value: 42}
 
-    quote := copy.Deep(meaningOfLife)
+	quote := cp.Deep(meaningOfLife)
 }
 ```
 
